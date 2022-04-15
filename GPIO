@@ -1,0 +1,48 @@
+#include <cstdio>
+#include <chrono>
+#include <thread>
+#include "UNR_GPIO_BCM2711.h"
+
+int main()
+{
+	setup();
+	printf("hello from classTest!\n");
+	int ledPIN = 3; //gpio pin selected
+	setup_gpio(ledPIN, OUTPUT, PUD_UP);
+
+	const int gpio = 7;
+	setup_gpio(gpio, INPUT, PUD_UP);
+
+	int gpio_count = 0;
+	
+	
+	while (int j = 0 < 1000) {
+		if (gpio == HIGH) {
+			gpio_count = gpio_count + 1;
+			if (gpio_count % 2 == 0) {
+				output_gpio(ledPIN, LOW);
+
+			}
+			else {
+				output_gpio(ledPIN, HIGH);
+
+			}
+		}
+		j++;
+	}
+			//for (int i = 0; i < 1000; i++) {
+			
+			//output_gpio(ledPIN, HIGH);
+			//std::this_thread::sleep_for(std::chrono::milliseconds(200));
+
+
+			//output_gpio(ledPIN, LOW);
+			//std::this_thread::sleep_for(std::chrono::milliseconds(200));
+
+
+
+
+	cleanup();
+
+    return 0;
+}
